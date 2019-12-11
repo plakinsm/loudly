@@ -1,0 +1,14 @@
+.main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    color: #202631;
+    background-color: #fbfbfb;
+}
+
+.page {
+    margin-top: 15vh;
+}

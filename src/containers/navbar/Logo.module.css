@@ -1,0 +1,19 @@
+.container {
+    width: 100%;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1em 0 1em 1.5em;
+}
+
+.img {
+    width: 55px;
+    margin-right: 0.5em;
+}
+
+.text {
+    font-size: 1.6em;
+}

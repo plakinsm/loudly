@@ -1,0 +1,5 @@
+.playbar {
+    grid-area: bar;
+    height: 100px;
+    background-color: var(--playbarBg);;
+}

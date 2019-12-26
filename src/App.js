@@ -1,14 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+import { Root } from './containers/root/Root';
 
 export const App = () => (
-    <div className="page">
-        <BrowserRouter>
-            <Switch>
-                <Route path="/" render={() => (<h1>Hello!</h1>)} />
-            </Switch>
-        </BrowserRouter>
-    </div>
+    <BrowserRouter>
+        <Switch>
+            <Route path="/" component={Root} />
+        </Switch>
+    </BrowserRouter>
 );
 

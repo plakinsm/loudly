@@ -1,8 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap&subset=cyrillic-ext');
+
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
         "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: var(--text);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a,
+a:visited,
+a:active {
+    text-decoration: none;
+    color: var(--text);
+}
+
+:root {
+    --theme: #131313;
+    --text: #fff;
+    --textSec: #b9b9b9;
+    --mainBg: #232323;
+    --navbarBg: #131313;
+    --playbarBg: #313131; 
+    --primary: #ff7043;
 }

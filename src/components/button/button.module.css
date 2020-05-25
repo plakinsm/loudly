@@ -1,0 +1,38 @@
+.button {
+    font: inherit;
+    color: #fff;
+    border: none;
+    padding: 0.7em 2em;
+    min-width: 150px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 500px;
+    outline: none;
+}
+
+.buttonPrimary {
+    composes: button;
+    background-color: var(--primary);
+}
+
+.buttonPrimary:hover {
+    background-color: var(--primaryLight);
+}
+
+.buttonPrimary:disabled, .buttonPrimary:active {
+    background-color: var(--primaryDark);
+}
+
+.buttonSecondary {
+    composes: button;
+    background-color: rgba(255,255,255,0);
+    border: 2px solid var(--primary);
+}
+
+.buttonSecondary:hover {
+    background-color: rgba(255,255,255,.1);
+}
+
+.buttonSecondary:disabled, .buttonSecondary:active {
+    background-color: rgba(255,255,255,.2);
+}

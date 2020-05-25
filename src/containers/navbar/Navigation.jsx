@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from '../../components';
+import { NavLink } from 'react-router-dom';
+// import { NavLink } from '../../components';
 import styles from './Navigation.module.css';
 import { ReactComponent as HomeIcon} from '../../assets/home.svg';
 import { ReactComponent as SearchIcon} from '../../assets/search.svg';
@@ -10,6 +11,7 @@ export const Navigation = () => (
         <li>
             <NavLink to="/"
                 className={styles.item}
+                exact
                 activeClassName={styles.itemActive}
             >
                 <HomeIcon />

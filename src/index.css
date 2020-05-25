@@ -42,4 +42,7 @@ a:active {
     --navbarBg: #131313;
     --playbarBg: #313131; 
     --primary: #ff7043;
+    --primaryLight: #ff7b52;
+    --primaryDark: #e76139;
+    --formBg: #313131;
 }

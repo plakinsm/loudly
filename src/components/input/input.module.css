@@ -1,0 +1,30 @@
+.container {
+    position: relative;
+    margin-bottom: 0.5em;
+}
+
+.label {
+
+}
+
+.textInput {
+    font: inherit;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+    border: 1px solid var(--text);
+    margin: 0.5em 0 1.2em;
+    width: 100%;
+}
+
+.textInput:focus {
+    outline: none;
+    border: 1px solid var(--primary);
+}
+
+.error {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 0.8em;
+    color: #ef5350;
+}

@@ -8,7 +8,7 @@ import { authorize } from '../../api/auth';
 const required = (value) => value ? null : 'Поле должно быть заполнено.'
 class AuthCmp extends React.Component {
     render() {
-        const { handleSubmit, pristine, submitting } = this.props;
+        const { handleSubmit, submitting } = this.props;
         return (
             <div className={styles.main}>
                 <div className={styles.logo}>

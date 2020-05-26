@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './Root.module.css'
-import { Navbar } from '../navbar/Navbar';
-import { Main } from '../main/Main';
-import { Playbar } from '../playbar/Playbar';
+import styles from './root.module.css'
+import { Navbar } from '../navbar/navbar';
+import { Main } from '../main/main';
+import { Playbar } from '../playbar/playbar';
 
 export const Root = () => (
     <div className={styles.top}>

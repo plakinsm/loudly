@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0.2em 1em;
+    transition-duration: .3s;
+}
+
+.containerActive {
+    composes: container;
+    color: var(--primary);
+}
+
+.containerActive .play {
+    fill: var(--primary);
+    background-image: none;
+}
+
+.container:hover {
+    background-color: rgba(255,255,255, .1);
+}
+
+.main {
+    display: flex;
+    align-items: center;
+}
+
+.play {
+    width: 1em;
+    height: 1em;
+    fill: transparent;
+    background-image: url('../../assets/music-key.svg');
+}
+
+.container:hover .play {
+    fill: #fff;
+    background-image: none;
+}
+
+.containerActive:hover .play {
+    fill: var(--primary);
+    background-image: none;
+}
+
+.logo {
+    display: block;
+    padding: 0;
+    margin: 0;
+    margin: 0 1em;
+    width: 3.2em;
+    height: 3.2em;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 1em;
+}
+
+.credits {
+    display: flex;
+}
+
+.link, .link:visited {
+    font-size: 1em;
+    color: #bebebe;
+    text-decoration: none;
+    transition-duration: .3s;
+}
+
+.link:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.linkSeparator {
+    font-size: 1em;
+    color: #bebebe;
+    margin: 0 0.5em;
+}

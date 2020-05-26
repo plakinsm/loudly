@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap&subset=cyrillic-ext');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 body {
     margin: 0;
@@ -38,9 +38,9 @@ a:active {
     --theme: #131313;
     --text: #fff;
     --textSec: #b9b9b9;
-    --mainBg: #232323;
-    --navbarBg: #131313;
-    --playbarBg: #313131; 
+    --mainBg: #161616;
+    --navbarBg: #000000;
+    --playbarBg: #252525; 
     --primary: #ff7043;
     --primaryLight: #ff7b52;
     --primaryDark: #e76139;

@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
-import { Router } from './router/Router';
+import './app.css';
+import { Router } from './router/router';
 import { createStore, applyMiddleware } from 'redux';
 import { rootReducer } from './store';
 import thunk from 'redux-thunk';

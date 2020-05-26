@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 // import { NavLink } from '../../components';
-import styles from './Navigation.module.css';
+import styles from './navigation.module.css';
 import { ReactComponent as HomeIcon} from '../../assets/home.svg';
 import { ReactComponent as SearchIcon} from '../../assets/search.svg';
 import { ReactComponent as LibraryIcon} from '../../assets/library.svg';

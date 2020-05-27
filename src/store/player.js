@@ -6,13 +6,16 @@ const PREV_SONG = '@@player/prevSong';
 
 
 export const playerActionCreators = {
-    startNewPlay: (playlist, currentSong = null) => ({
-        type: START_NEW_PLAY,
-        payload: {
-            playlist,
-            currentSong
-        }
-    }),
+    startNewPlay: (playlist, currentSong = null) => (dispatch) => {
+        localStorage.setItem('currentSong', JSON.stringify(currentSong));
+        dispatch({
+            type: START_NEW_PLAY,
+            payload: {
+                playlist,
+                currentSong
+            }
+        });
+    },
     stopPlaying: () => ({
         type: STOP_PLAYING,
         payload: {}
@@ -33,7 +36,7 @@ export const playerActionCreators = {
 
 const initValues = {
     playlist: [],
-    currentSong: null,
+    currentSong: JSON.parse(localStorage.getItem('currentSong')),
     isPlaying: false
 }
 

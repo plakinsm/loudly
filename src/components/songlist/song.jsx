@@ -1,17 +1,20 @@
 import React from 'react';
 import styles from './song.module.css';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Icon } from '../../assets/play.svg';
+import { ReactComponent as PlayIcon } from '../../assets/play.svg';
+import { ReactComponent as PauseIcon } from '../../assets/pause.svg';
+import { getUrl } from '../../api/urls';
 
 export class Song extends React.PureComponent {
     render() {
-        console.log(this.props);
-        const { name, artist, album, onPlayButtonClick, id } = this.props;
+        const { name, artist, album, onPlayButtonClick, id, isCurrentSong, isPlaying } = this.props;
+        const Icon = !isCurrentSong ? PlayIcon : (isPlaying ? PauseIcon : PlayIcon)
+
         return (
-            <div className={this.props.playing ? styles.containerActive : styles.container}>
+            <div className={isCurrentSong ? styles.containerActive : styles.container}>
                 <div className={styles.main}>
                     <Icon onClick={() => onPlayButtonClick(id)} className={styles.play} />
-                    <img className={styles.logo} src={album.iconUrl} alt="Logo" />
+                    <img className={styles.logo} src={getUrl(album.iconUrl)} alt="Logo" />
                     <div className={styles.info}>
                         <span className={styles.title}>{name}</span>
                         <div className={styles.credits}>

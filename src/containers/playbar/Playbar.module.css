@@ -1,5 +1,78 @@
 .playbar {
     grid-area: bar;
-    height: 100px;
+    height: 90px;
     background-color: var(--playbarBg);;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 1em;
+}
+
+.info {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: block;
+    padding: 0;
+    margin: 0;
+    margin-right: 1em;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+}
+
+.songInfo {
+    margin-right: 1.5em;
+}
+.credits {
+    display: flex;
+}
+
+.artist, .artist:visited {
+    font-size: 1em;
+    color: #bebebe;
+    text-decoration: none;
+    transition-duration: .3s;
+    font-size: 0.8em;
+}
+
+.artist:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.title, .title:visited {
+    font-size: 1em;
+    text-decoration: none;
+    transition-duration: .3s;
+}
+
+.title:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    fill: var(--textSec);
+}
+
+.icon:hover {
+    fill: var(--text);
+}
+
+.iconActive {
+    width: 16px;
+    height: 16px;
+    fill: var(--primary);
 }

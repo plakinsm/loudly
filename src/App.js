@@ -10,7 +10,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 export const App = () => (
-    <Provider store={store} > 
+    <Provider store={store}>
         <Router />
     </Provider>
 );

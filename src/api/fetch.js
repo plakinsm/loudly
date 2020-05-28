@@ -13,3 +13,15 @@ export const fetchForLibrary = (after) => (dispatch) => {
         }
     ))
 }
+
+export const fetchForArtist = (id, after) => (dispatch) => {
+    dispatch(doFetch(
+        'artist',
+        Axios.get(getUrl(`/artists/${id}.json`)), 
+        {
+            afterAction: (result) => () => {
+                after(result);
+            }
+        }
+    ))
+}

@@ -5,6 +5,7 @@
     box-sizing: border-box;
     padding: 0.2em 1em;
     transition-duration: .3s;
+    user-select: none;
 }
 
 .containerActive {
@@ -81,4 +82,8 @@
     font-size: 1em;
     color: #bebebe;
     margin: 0 0.5em;
+}
+
+.right {
+    color: #bebebe;
 }

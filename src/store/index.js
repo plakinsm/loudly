@@ -4,11 +4,13 @@ import { playerReducer as player } from './player';
 import { userReducer as user } from './user';
 import { libraryReducer as library } from './library';
 import { fetchableReducer as fetchable } from './fetchable';
+import { artistReducer as artist } from './artist';
 
 export const rootReducer = combineReducers({
     user,
     player,
     library,
     fetchable,
+    artist,
     form: formReducer
 });

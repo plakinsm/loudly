@@ -9,13 +9,13 @@ import { ReactComponent as LikeActiveIcon } from '../../assets/like-active.svg';
 import { libraryActionCreators } from '../../store/library';
 import { getUrl } from '../../api/urls';
 
-const defaultAlbumCoverUrl = '/files/album.png';
+const defaultAlbumCoverUrl = '/files/covers/default.png';
 
 class PlaybarСmp extends React.Component {
     render() {
         console.log(this.props);
         const { currentSong, library, addSongToLibrary, removeSongFromLibrary } = this.props;
-        const iconUrl = getUrl(currentSong ? currentSong.album.iconUrl : defaultAlbumCoverUrl);
+        const imageUrl = getUrl(currentSong ? currentSong.album.imageUrl : defaultAlbumCoverUrl);
         const name = currentSong && currentSong.name;
         const artist = currentSong && currentSong.artist;
         const album = currentSong && currentSong.album;
@@ -24,7 +24,7 @@ class PlaybarСmp extends React.Component {
             <div className={styles.playbar}>
                 <div className={styles.container}>
                     <div className={styles.info}>
-                        <img className={styles.logo} src={iconUrl} alt="Logo" />
+                        <img className={styles.logo} src={imageUrl} alt="Logo" />
                         {
                             currentSong && (
                                 <>

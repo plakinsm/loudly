@@ -1,0 +1,51 @@
+.container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
+    grid-row: auto 1fr;
+    grid-gap: 1em;
+}
+  
+.container::after {
+    content: "";
+    flex: auto;
+}
+
+.card {
+    background-color: #282828;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+    padding: 1.2em 1.2em 1em;
+}
+
+.cardImageWrapper {
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+    margin-bottom: 1em;
+}
+
+.cardImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    min-height: 60px;
+
+}
+
+.infoWithoutDetails {
+    composes: info;
+    align-items: center;
+    min-height: 30px;
+}
+
+.title {
+    font-size: 1em;
+}

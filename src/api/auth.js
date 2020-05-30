@@ -1,32 +1,22 @@
 import { get } from 'lodash';
-
-const token = '23ergeft435cre2341cfvdta4gk2';
+import axios from 'axios';
 
 export const authorize = (data, history) => {
-    return new Promise(resolve => setTimeout(() => {
-        if (data.email !== '1') {
-            resolve({
-                data: {
-                    email: 'User does not exist.'
-                },
-                error: true
-            })
-        } else if (data.password !== '1') {
-            resolve({
-                data: {
-                    password: 'Wrong password.'
-                },
-                error: true
-            })
-        } else {
-            localStorage.setItem('authToken', token);
-            history.push(get(history, 'location.state.from', '/'), null);
-            resolve({
-                error: false,
-                data: {
-                    token
-                }
-            })
-        }
-    }, 1000))
+    return new Promise((resolve) => {
+        axios.post('/auth/signin', {
+            email: data.email,
+            password: data.password
+        }).then(({ data, status }) => {
+            if (status === 200 && data.error) {
+                resolve({
+                    data: {
+                        password: data.message
+                    },
+                    error: true
+                })
+            } else if (status === 200 && !data.error) {
+                document.location.href = '/';
+            }
+        })
+    })
 }

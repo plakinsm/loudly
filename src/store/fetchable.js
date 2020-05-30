@@ -11,13 +11,27 @@ export const fetchFinish = (namespace) => ({
     payload: { namespace }
 })
 
-export const doFetch = (namespace, request, { afterAction }) => (dispatch) => {
-    dispatch(fetchStart(namespace))
+export const goToAuth = () => {
+    document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+    document.location.href = '/auth';
+}
+
+export const doFetch = (namespace, request, { afterAction, disableLoading }) => (dispatch) => {
+    if (!disableLoading) {
+        dispatch(fetchStart(namespace));
+    }
     request
     .then((...result) => {
-        dispatch(fetchFinish(namespace));
+        if (!disableLoading) {
+            dispatch(fetchFinish(namespace));
+        }
         if (afterAction) {
             dispatch(afterAction(...result));
+        }
+    })
+    .catch(({ response }) => {
+        if (response.status === 401) {
+            goToAuth();
         }
     })
 }

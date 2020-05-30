@@ -20,7 +20,7 @@ export class Song extends React.PureComponent {
             <div className={isCurrentSong ? styles.containerActive : styles.container}>
                 <div className={styles.main}>
                     <Icon onClick={() => onPlayButtonClick(id)} className={styles.play} />
-                    <img className={styles.logo} src={getUrl(album.iconUrl)} alt="Logo" />
+                    <img className={styles.logo} src={getUrl(album.imageUrl)} alt="Logo" />
                     <div className={styles.info}>
                         <span className={styles.title}>{name}</span>
                         {!hideDetails && (

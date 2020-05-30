@@ -1,19 +1,35 @@
+import { addSongToLibrary, removeSongFromLibrary } from "../api/fetch";
+
 const ADD_SONG = '@@library/addSongToLibrary';
 const REMOVE_SONG = '@@library/removeSongFromLibrary';
 const PUT_SONGS = '@@library/putSongsToLibrary';
 
 export const libraryActionCreators = {
     addSongToLibrary: (song) => (dispatch) => {
-        console.log(dispatch);
+        dispatch(addSongToLibrary(song.id, (result) => {
+            dispatch({
+                type: PUT_SONGS,
+                payload: { songs: result.data.library }
+            });
+        }));
         dispatch({
             type: ADD_SONG,
             payload: { song }
         })
     },
-    removeSongFromLibrary: (song) => ({
-        type: REMOVE_SONG,
-        payload: { song }
-    }),
+    removeSongFromLibrary: (song) => (dispatch) => {
+        console.log(song);
+        dispatch(removeSongFromLibrary(song.id, (result) => {
+            dispatch({
+                type: PUT_SONGS,
+                payload: { songs: result.data.library }
+            })
+        }));
+        dispatch({
+            type: REMOVE_SONG,
+            payload: { song }
+        })
+    },
     putSongsToLibrary: (songs) => ({
         type: PUT_SONGS,
         payload: { songs }

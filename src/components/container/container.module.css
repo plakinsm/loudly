@@ -2,7 +2,7 @@
     position: relative;
     box-sizing: border-box;
     width: 100%;
-    min-height: calc(100vh - 90px);
+    flex-grow: 1;
 }
 
 .loader {

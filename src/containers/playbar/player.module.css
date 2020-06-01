@@ -1,0 +1,102 @@
+.container {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.soundline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.soundTime {
+    font-size: 12px;
+    color: rgba(255,255,255, .5);
+    margin: 0 0.75em;
+    line-height: 12px;
+}
+
+.prevIcon {
+    width: 12px;
+    height: 12px;
+    fill: var(--textSec);
+    transform-origin: center;
+    margin: 0 1em;
+}
+
+.prevIcon:hover {
+    fill: var(--text);
+    transform: scale(1.05, 1.05);
+}
+
+.nextIcon {
+    width: 12px;
+    height: 12px;
+    fill: var(--textSec);
+    transform-origin: center;
+    transform: scaleX(-1);
+    margin: 0 1em;
+}
+
+.nextIcon:hover {
+    fill: var(--text);
+    transform: scale(1.05, 1.05) scaleX(-1);
+}
+
+
+
+.controlsPlay {
+    width: 2em;
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 300px;
+    border: 1px solid var(--textSec);
+    transform-origin: center;
+    transition-duration: .1s;
+    margin: 0 1em;
+}
+
+.controlsPlay:hover {
+    transform: scale(1.1);
+    border: 1px solid var(--text);
+}
+
+.controlsPlay:active {
+    transform: scale(1);
+    border: 1px solid var(--text);
+}
+
+.controlsPlay:hover .pauseIcon {
+    fill: var(--text);
+}
+
+.pauseIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    fill: var(--textSec);
+    transform-origin: center;
+}
+
+.playIcon {
+    composes: pauseIcon;
+    transform: translate(-50%, -50%) translateX(6%);
+}

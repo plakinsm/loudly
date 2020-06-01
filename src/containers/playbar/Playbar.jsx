@@ -8,12 +8,12 @@ import { ReactComponent as LikeIcon } from '../../assets/like.svg';
 import { ReactComponent as LikeActiveIcon } from '../../assets/like-active.svg';
 import { libraryActionCreators } from '../../store/library';
 import { getUrl } from '../../api/urls';
+import { Player } from './player';
 
 const defaultAlbumCoverUrl = '/files/covers/default.png';
 
 class PlaybarСmp extends React.Component {
     render() {
-        console.log(this.props);
         const { currentSong, library, addSongToLibrary, removeSongFromLibrary } = this.props;
         const imageUrl = getUrl(currentSong ? currentSong.album.imageUrl : defaultAlbumCoverUrl);
         const name = currentSong && currentSong.name;
@@ -40,13 +40,12 @@ class PlaybarСmp extends React.Component {
                                         ) : (
                                             <LikeIcon className={styles.icon} />
                                         )}
-                                        
                                     </ButtonIcon>                                
                                 </>
                             )
                         }
                     </div>
-                    <div className={styles.player}></div>
+                    <Player {...this.props} />
                     <div className={styles.volume}></div>
                 </div>
             </div>

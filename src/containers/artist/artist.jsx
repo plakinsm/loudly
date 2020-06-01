@@ -50,7 +50,7 @@ class ArtistCmp extends React.Component {
                         </div>
                         <div className={styles.albums}>
                             <h2 className={styles.h2}>Albums</h2>
-                            <Cards cards={albums} />
+                            <Cards cards={albums} path="/album/" hideDetails />
                         </div>
                     </div>
                 </div>

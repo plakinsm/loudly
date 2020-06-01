@@ -1,3 +1,5 @@
+import { uniq } from 'lodash';
+
 export const FETCH_START = '@@fetchable/fetchStart';
 export const FETCH_FINISH = '@@fetchable/fetchFinish';
 
@@ -29,8 +31,11 @@ export const doFetch = (namespace, request, { afterAction, disableLoading }) => 
             dispatch(afterAction(...result));
         }
     })
-    .catch(({ response }) => {
-        if (response.status === 401) {
+    .catch((result) => {
+        if (!disableLoading) {
+            dispatch(fetchFinish(namespace));
+        }
+        if (result.response.status === 401) {
             goToAuth();
         }
     })
@@ -47,7 +52,7 @@ const initValues = {
 export const fetchableReducer = (state = initValues, { type, payload }) => {
     switch (type) {
         case FETCH_START:
-            return { ...state, namespaces: [...state.namespaces, payload.namespace] };
+            return { ...state, namespaces: uniq([...state.namespaces, payload.namespace]) };
         case FETCH_FINISH:
             return { ...state, namespaces: state.namespaces.filter((namespace) => namespace !== payload.namespace) };
         default:

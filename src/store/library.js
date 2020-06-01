@@ -18,7 +18,6 @@ export const libraryActionCreators = {
         })
     },
     removeSongFromLibrary: (song) => (dispatch) => {
-        console.log(song);
         dispatch(removeSongFromLibrary(song.id, (result) => {
             dispatch({
                 type: PUT_SONGS,

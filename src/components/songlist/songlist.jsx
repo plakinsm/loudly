@@ -16,7 +16,7 @@ export class Songlist extends React.Component {
     }
 
     renderList = () => {
-        const { songs, currentSong, isPlaying, hideDetails } = this.props;
+        const { songs, currentSong, isPlaying, hideDetails, hideImage } = this.props;
 
         return songs.map(
             (song) => (
@@ -26,6 +26,7 @@ export class Songlist extends React.Component {
                     isCurrentSong={currentSong && currentSong.id === song.id}
                     isPlaying={isPlaying}
                     hideDetails={hideDetails}
+                    hideImage={hideImage}
                     {...song}
                 />
             )

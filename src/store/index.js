@@ -5,6 +5,8 @@ import { userReducer as user } from './user';
 import { libraryReducer as library } from './library';
 import { fetchableReducer as fetchable } from './fetchable';
 import { artistReducer as artist } from './artist';
+import { albumReducer as album } from './album';
+import { searchReducer as search } from './search';
 
 export const rootReducer = combineReducers({
     user,
@@ -12,5 +14,7 @@ export const rootReducer = combineReducers({
     library,
     fetchable,
     artist,
+    album,
+    search,
     form: formReducer
 });

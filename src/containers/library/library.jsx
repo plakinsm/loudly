@@ -1,5 +1,4 @@
 import React from 'react';
-import Loader from 'react-loader-spinner';
 import styles from './library.module.css';
 import { Songlist } from '../../components/songlist';
 import { connect } from 'react-redux';
@@ -17,7 +16,6 @@ class LibraryCmp extends React.Component {
         )
     }
     render() {
-        console.log(this.props);
         return (
             <Container namespace="library">
                 <div className={styles.container}>

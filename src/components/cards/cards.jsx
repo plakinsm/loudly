@@ -4,12 +4,15 @@ import { Card } from './card';
 
 export class Cards extends React.Component {
     renderCards = () => {
-        const { cards = [] } = this.props;
+        const { cards = [], path, rounded, hideDetails, detailsSelector, detailsPath } = this.props;
         return cards.map((card) => 
             <Card
                 key={card.id}
-                hideDetails
-                path="/album/"
+                hideDetails={hideDetails}
+                path={path}
+                rounded={rounded}
+                detailsSelector={detailsSelector}
+                detailsPath={detailsPath}
                 {...card}  
             />
         )

@@ -1,0 +1,81 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height: calc((100vh - 90px) / 2);
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.headerImage {
+    width: 30vh;
+    height: 30vh;
+    display: block;
+    margin-right: 2em;
+    box-shadow: 0 4px 60px rgba(0,0,0,.5);
+}
+
+.headerContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    padding: 0 2em;
+    background: linear-gradient( to top, transparent,rgba(97, 97, 97, 0.2));
+}
+
+.h1 {
+    font-size: 5em;
+    font-weight: bold;
+}
+
+.info {
+    display: flex;
+    margin: 1em 0;
+}
+
+.infoArtist, .infoArtist:visited {
+    font-size: 1em;
+    text-decoration: none;
+    transition-duration: .3s;
+    font-weight: bold;
+}
+
+.infoArtist:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.infoSeparator {
+    margin: 0 0.5em;
+}
+
+.info span {
+    
+    color: #bebebe;
+}
+
+.main {
+    box-sizing: border-box;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.h2 {
+    font-size: 1.8em;
+    margin-bottom: 0.8em;
+}
+
+.popular {
+    margin-bottom: 2em;
+}

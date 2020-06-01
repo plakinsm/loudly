@@ -20,7 +20,18 @@ export const fetchForArtist = (id, after) => (dispatch) => {
         Axios.get(getUrl(`/artists/${id}`)), 
         {
             afterAction: (result) => () => {
-                console.log(result);
+                after && after(result);
+            }
+        }
+    ))
+}
+
+export const fetchForAlbum = (id, after) => (dispatch) => {
+    dispatch(doFetch(
+        'album',
+        Axios.get(getUrl(`/albums/${id}`)), 
+        {
+            afterAction: (result) => () => {
                 after && after(result);
             }
         }
@@ -34,7 +45,6 @@ export const addSongToLibrary = (id, after) => (dispatch) => {
         {
             disableLoading: true,
             afterAction: (result) => () => {
-                console.log(result);
                 after && after(result);
             }
         }
@@ -42,7 +52,6 @@ export const addSongToLibrary = (id, after) => (dispatch) => {
 }
 
 export const removeSongFromLibrary = (id, after) => (dispatch) => {
-    console.log(id);
     dispatch(doFetch(
         'library',
         Axios.delete(getUrl('/library'), {
@@ -51,7 +60,6 @@ export const removeSongFromLibrary = (id, after) => (dispatch) => {
         {
             disableLoading: true,
             afterAction: (result) => () => {
-                console.log(result);
                 after && after(result);
             }
         }

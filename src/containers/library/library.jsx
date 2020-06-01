@@ -6,15 +6,9 @@ import { bindActionCreators } from 'redux';
 import { playerActionCreators } from '../../store/player';
 import { isFetchingSelector } from '../../store/fetchable';
 import { libraryActionCreators } from '../../store/library';
-import { fetchForLibrary } from '../../api/fetch';
 import { Container } from '../../components/container/container';
 
 class LibraryCmp extends React.Component {
-    componentDidMount() {
-        this.props.dispatch(
-            fetchForLibrary((result) => this.props.putSongsToLibrary(result.data.library))
-        )
-    }
     render() {
         return (
             <Container namespace="library">
@@ -31,7 +25,6 @@ export const Library = connect(
     (state) => ({
         ...state.player,
         ...state.library,
-        fetching: isFetchingSelector('library')(state)
     }),
     (dispatch) => ({
         ...bindActionCreators({

@@ -3,9 +3,17 @@ const STOP_PLAYING = '@@player/pauseSong';
 const START_PLAYING = '@@player/unpauseSong';
 const NEXT_SONG = '@@player/nextSong';
 const PREV_SONG = '@@player/prevSong';
+const PUT_SONG_FROM_LOCAL_STORAGE = '@@player/PUT_SONG_FROM_LOCAL_STORAGE';
 
 
 export const playerActionCreators = {
+    putSongFromLocalStorage: (playlist, currentSong = null) => ({
+        type: PUT_SONG_FROM_LOCAL_STORAGE,
+        payload: {
+            playlist,
+            currentSong
+        }
+    }),
     startNewPlay: (playlist, currentSong = null) => (dispatch) => {
         localStorage.setItem('currentSong', JSON.stringify({currentSong, playlist}));
         dispatch({
@@ -34,15 +42,16 @@ export const playerActionCreators = {
     }),
 }
 
-const { playlist = [], currentSong = null } = JSON.parse(localStorage.getItem('currentSong'))
 const initValues = {
-    playlist,
-    currentSong,
+    playlist: [],
+    currentSong: null,
     isPlaying: false
 }
 
 export const playerReducer = (state = initValues, { type, payload }) => {
     switch (type) {
+        case PUT_SONG_FROM_LOCAL_STORAGE:
+            return { ...state, currentSong: payload.currentSong || payload.playlist[0], playlist: payload.playlist }
         case START_NEW_PLAY:
             return { ...state, isPlaying: true, currentSong: payload.currentSong || payload.playlist[0], playlist: payload.playlist };
         case STOP_PLAYING:

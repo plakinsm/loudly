@@ -65,3 +65,15 @@ export const removeSongFromLibrary = (id, after) => (dispatch) => {
         }
     ))
 }
+
+export const fetchForRecommendations = (after) => (dispatch) => {
+    dispatch(doFetch(
+        'home',
+        Axios.get(getUrl('/recommendations')), 
+        {
+            afterAction: (result) => () => {
+                after && after(result);
+            }
+        }
+    ))
+}

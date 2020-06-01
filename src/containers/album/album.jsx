@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import { albumActionCreators } from '../../store/album';
 import { fetchForAlbum } from '../../api/fetch';
 import { Songlist } from '../../components/songlist';
-import { Cards } from '../../components/cards/cards';
 import { Container } from '../../components/container/container';
 import { Link } from 'react-router-dom';
 

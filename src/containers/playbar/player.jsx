@@ -106,7 +106,8 @@ export class Player extends React.Component {
     render() {
         console.log(this.props);
         const { isPlaying, nextSong, prevSong } = this.props;
-        const duration = this.Player && this.Player.duration ? durationToMMSS(this.Player.duration) : "00:00"
+        const duration = this.Player && this.Player.duration ? durationToMMSS(this.Player.duration) : "0:00"
+        const currentTime = this.Player && this.Player.currentTime ? durationToMMSS(this.Player.currentTime) : "0:00"
         return (
             <div className={styles.container}>
                 <div className={styles.controls}>
@@ -127,7 +128,7 @@ export class Player extends React.Component {
                     </ButtonIcon> 
                 </div>
                 <div className={styles.soundline}>
-                    <div className={styles.soundTime}>00:00</div>
+                    <div className={styles.soundTime}>{currentTime}</div>
                     <Range
                         onChange={this.setTime}
                         value={this.state.timePercent}

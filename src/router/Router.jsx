@@ -7,7 +7,7 @@ import { Auth } from '../containers/auth/auth';
 export const Router = () => (
     <BrowserRouter>
         <Switch>
-            <Route path="/login" component={Auth} />
+            <Route path="/auth" component={Auth} />
             <PrivateRoute path="/" component={Root} />
         </Switch>
     </BrowserRouter>

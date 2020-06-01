@@ -23,7 +23,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid var(--text);
 }
 
 .logoImg {
@@ -33,5 +32,18 @@
 }
 
 .buttons {
-    align-self: flex-end;
+    align-self: center;
+}
+
+.linkContainer {
+    align-self: center;
+    margin-top: 1em;
+}
+
+.link, .link:visited {
+    color: var(--primary);
+}
+
+.link:hover {
+    text-decoration: underline;
 }

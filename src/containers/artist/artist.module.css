@@ -10,7 +10,6 @@
     height: calc((100vh - 90px) / 2);
     position: relative;
     width: 100%;
-    overflow: hidden;
     z-index: 1;
 }
 

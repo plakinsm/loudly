@@ -1,4 +1,5 @@
 import { uniq } from 'lodash';
+import { goToAuth } from '../utils/auth';
 
 export const FETCH_START = '@@fetchable/fetchStart';
 export const FETCH_FINISH = '@@fetchable/fetchFinish';
@@ -12,11 +13,6 @@ export const fetchFinish = (namespace) => ({
     type: FETCH_FINISH,
     payload: { namespace }
 })
-
-export const goToAuth = () => {
-    document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
-    document.location.href = '/auth';
-}
 
 export const doFetch = (namespace, request, { afterAction, disableLoading }) => (dispatch) => {
     if (!disableLoading) {
@@ -35,6 +31,7 @@ export const doFetch = (namespace, request, { afterAction, disableLoading }) => 
         if (!disableLoading) {
             dispatch(fetchFinish(namespace));
         }
+        console.log(result);
         if (result.response.status === 401) {
             goToAuth();
         }

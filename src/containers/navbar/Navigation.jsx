@@ -9,9 +9,8 @@ import { ReactComponent as LibraryIcon} from '../../assets/library.svg';
 export const Navigation = () => (
     <ul className={styles.container}>
         <li>
-            <NavLink to="/"
+            <NavLink to="/home"
                 className={styles.item}
-                exact
                 activeClassName={styles.itemActive}
             >
                 <HomeIcon />

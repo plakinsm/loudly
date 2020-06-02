@@ -5,7 +5,7 @@ import { TextInput, Button } from '../../components'
 import { signUp } from '../../api/auth';
 import { Link } from 'react-router-dom';
 
-const required = (name) => (value) => value ? null : `${name} is required.`;
+const required = (value) => value ? null : 'Field is required.';
 class SignUpCmp extends React.Component {
     render() {
         const { handleSubmit, submitting } = this.props;
@@ -17,7 +17,7 @@ class SignUpCmp extends React.Component {
                     type="text"
                     placeholder="Name"
                     label="Name"
-                    validate={required('Name')}
+                    validate={required}
                 />
                 <Field
                     component={TextInput}
@@ -25,7 +25,7 @@ class SignUpCmp extends React.Component {
                     type="text"
                     placeholder="Email"
                     label="Email"
-                    validate={required('Email')}
+                    validate={required}
                 />
                 <Field
                     component={TextInput}
@@ -33,7 +33,7 @@ class SignUpCmp extends React.Component {
                     type="password"
                     placeholder="Password"
                     label="Password"
-                    validate={required('Password')}
+                    validate={required}
                 />
                 <div className={styles.buttons}>
                     <Button

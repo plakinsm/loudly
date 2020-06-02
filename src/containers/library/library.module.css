@@ -12,3 +12,26 @@
     font-size: 2.5em;
     margin-bottom: 0.5em;
 }
+
+.empty {
+    margin-top: 10vh;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+.h2 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    font-weight: normal;
+}
+
+.linkToMain, .linkToMain:visited {
+    font-size: 2em;
+    color: var(--primary);
+}
+
+.linkToMain:hover {
+    text-decoration: underline;
+}

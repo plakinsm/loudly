@@ -100,3 +100,30 @@
     composes: pauseIcon;
     transform: translate(-50%, -50%) translateX(6%);
 }
+
+.volume {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.volumeContainer {
+    width: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.volumeIcon {
+    width: 14px;
+    height: 14px;
+    fill: var(--textSec);
+    transform-origin: center;
+    margin-right: 0.75em;
+}
+
+.volumeIcon:hover {
+    fill: var(--text);
+    transform: scale(1.05, 1.05);
+}

@@ -2,4 +2,6 @@
     grid-area: nav;
     width: 220px;
     background-color: var(--navbarBg);
+    display: flex;
+    flex-direction: column;
 }

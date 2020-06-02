@@ -6,8 +6,14 @@ import { bindActionCreators } from 'redux';
 import { Songlist } from '../../components/songlist';
 import { Container } from '../../components/container/container';
 import { recommendationsActionCreators } from '../../store/recommendations';
+import { fetchForRecommendations } from '../../api/fetch';
 
 class HomeCpm extends React.Component {
+    componentDidMount() {
+        this.props.dispatch(
+            fetchForRecommendations((recomendations) => this.props.putRecommendations(recomendations.data))
+        );
+    }
     render() {
         return (
             <Container namespace="home">

@@ -7,20 +7,17 @@ import { Artist } from '../artist/artist';
 import { Album } from '../album/album';
 import { Search } from '../search/search';
 import { Home } from '../home/home';
-import { fetchForLibrary, fetchForRecommendations } from '../../api/fetch';
+import { fetchForLibrary } from '../../api/fetch';
 import { libraryActionCreators } from '../../store/library';
 import { playerActionCreators } from '../../store/player';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { recommendationsActionCreators } from '../../store/recommendations';
+
 
 class MainCmp extends React.Component {
     componentDidMount() {
         this.props.dispatch(
             fetchForLibrary((result) => this.props.putSongsToLibrary(result.data.library))
-        );
-        this.props.dispatch(
-            fetchForRecommendations((recomendations) => this.props.putRecommendations(recomendations.data))
         );
         const { playlist, currentSong } = localStorage.getItem('currentSong') ?
             JSON.parse(localStorage.getItem('currentSong')) : {}
@@ -55,8 +52,7 @@ export const Main = connect(
     (dispatch) => ({
         ...bindActionCreators({
             ...playerActionCreators,
-            ...libraryActionCreators,
-            ...recommendationsActionCreators
+            ...libraryActionCreators
         }, dispatch),
         dispatch
     })

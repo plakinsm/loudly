@@ -46,7 +46,6 @@ class PlaybarСmp extends React.Component {
                         }
                     </div>
                     <Player {...this.props} />
-                    <div className={styles.volume}></div>
                 </div>
             </div>
         )

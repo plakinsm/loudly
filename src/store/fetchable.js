@@ -12,28 +12,35 @@ export const fetchStart = (namespace) => ({
 export const fetchFinish = (namespace) => ({
     type: FETCH_FINISH,
     payload: { namespace }
-})
+});
+
+const namespaceTimestamp = {};
 
 export const doFetch = (namespace, request, { afterAction, disableLoading }) => (dispatch) => {
+    let timestamp = Date.now();
     if (!disableLoading) {
         dispatch(fetchStart(namespace));
+        namespaceTimestamp[namespace] = timestamp;
     }
     request
     .then((...result) => {
-        if (!disableLoading) {
-            dispatch(fetchFinish(namespace));
-        }
-        if (afterAction) {
-            dispatch(afterAction(...result));
+        if (namespaceTimestamp[namespace] === timestamp) {
+            if (!disableLoading) {
+                dispatch(fetchFinish(namespace));
+            }
+            if (afterAction) {
+                dispatch(afterAction(...result));
+            }
         }
     })
     .catch((result) => {
-        if (!disableLoading) {
-            dispatch(fetchFinish(namespace));
-        }
-        console.log(result);
-        if (result.response.status === 401) {
-            goToAuth();
+        if (namespaceTimestamp[namespace] === timestamp) {
+            if (!disableLoading) {
+                dispatch(fetchFinish(namespace));
+            }
+            if (result.response.status === 401) {
+                goToAuth();
+            }
         }
     })
 }

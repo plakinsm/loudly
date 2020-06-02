@@ -4,15 +4,18 @@ import { ButtonIcon } from '../../components/button';
 import { ReactComponent as PrevIcon } from '../../assets/prev.svg';
 import { ReactComponent as PlayIcon } from '../../assets/play.svg';
 import { ReactComponent as PauseIcon } from '../../assets/pause.svg';
+import { ReactComponent as VolumeIcon } from '../../assets/volume.svg';
 import { Range } from '../../components/range/range';
 import { durationToMMSS } from '../../utils/time';
 
 export class Player extends React.Component {
     state = {
-        timePercent: 0
+        timePercent: 0,
+        volumePercent: 0.5,
     }
 
     Player = null;
+    volumeMultiplier = 0.2;
 
     componentDidMount = () => {
         this.interval = setInterval(this.timer, 500);
@@ -56,7 +59,7 @@ export class Player extends React.Component {
                 this.Player = new Audio(this.props.currentSong.url);
                 this.Player.addEventListener('loadeddata', () => {
                     this.Player.play();
-                    this.Player.volume = 0.05;
+                    this.Player.volume = this.state.volumePercent * this.volumeMultiplier;
                     this.setCurrentTime();
                 })
                 this.Player.addEventListener('ended', () => {
@@ -86,6 +89,14 @@ export class Player extends React.Component {
         });
     }
 
+    setVolume = (volumePercent) => {
+        this.setState({ volumePercent }, () => {
+            if (this.Player) {
+                this.Player.volume = this.state.volumePercent * this.volumeMultiplier;
+            }
+        });
+    }
+
     setCurrentTime = () => {
         const duration = this.Player.duration;
         if (!Number.isNaN(duration)) {
@@ -109,33 +120,46 @@ export class Player extends React.Component {
         const duration = this.Player && this.Player.duration ? durationToMMSS(this.Player.duration) : "0:00"
         const currentTime = this.Player && this.Player.currentTime ? durationToMMSS(this.Player.currentTime) : "0:00"
         return (
-            <div className={styles.container}>
-                <div className={styles.controls}>
-                    <ButtonIcon>
-                        <PrevIcon onClick={prevSong} className={styles.prevIcon} />
-                    </ButtonIcon>
-                    <ButtonIcon onClick={this.onPlayButtonClick}>
-                        <div className={styles.controlsPlay}>
-                            {isPlaying ? (
-                                <PauseIcon className={styles.pauseIcon} />
-                            ) : (
-                                <PlayIcon className={styles.playIcon} />
-                            )}
-                        </div>
-                    </ButtonIcon>
-                    <ButtonIcon>
-                        <PrevIcon onClick={nextSong} className={styles.nextIcon} />
-                    </ButtonIcon> 
+            <>
+                <div className={styles.container}>
+                    <div className={styles.controls}>
+                        <ButtonIcon>
+                            <PrevIcon onClick={prevSong} className={styles.prevIcon} />
+                        </ButtonIcon>
+                        <ButtonIcon onClick={this.onPlayButtonClick}>
+                            <div className={styles.controlsPlay}>
+                                {isPlaying ? (
+                                    <PauseIcon className={styles.pauseIcon} />
+                                ) : (
+                                    <PlayIcon className={styles.playIcon} />
+                                )}
+                            </div>
+                        </ButtonIcon>
+                        <ButtonIcon>
+                            <PrevIcon onClick={nextSong} className={styles.nextIcon} />
+                        </ButtonIcon> 
+                    </div>
+                    <div className={styles.soundline}>
+                        <div className={styles.soundTime}>{currentTime}</div>
+                        <Range
+                            onChange={this.setTime}
+                            value={this.state.timePercent}
+                        />
+                        <div className={styles.soundTime}>{duration}</div>
+                    </div>
                 </div>
-                <div className={styles.soundline}>
-                    <div className={styles.soundTime}>{currentTime}</div>
-                    <Range
-                        onChange={this.setTime}
-                        value={this.state.timePercent}
-                    />
-                    <div className={styles.soundTime}>{duration}</div>
+                <div className={styles.volume}>
+                    <div className={styles.volumeContainer}>
+                        <ButtonIcon>
+                            <VolumeIcon onClick={() => {}} className={styles.volumeIcon} />
+                        </ButtonIcon>
+                        <Range
+                            onChange={this.setVolume}
+                            value={this.state.volumePercent}
+                        />
+                    </div>
                 </div>
-            </div>
+            </>
         )
     }
 }

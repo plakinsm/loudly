@@ -8,6 +8,7 @@ import { fetchForArtist } from '../../api/fetch';
 import { Songlist } from '../../components/songlist';
 import { Cards } from '../../components/cards/cards';
 import { Container } from '../../components/container/container';
+import { getUrl } from '../../api/urls';
 
 class ArtistCmp extends React.Component {
     componentDidMount() {
@@ -38,7 +39,7 @@ class ArtistCmp extends React.Component {
             <Container namespace="artist">
                 <div className={styles.container}>
                     <div className={styles.header}>
-                        <div className={styles.headerImage} style={{ backgroundImage: `url(${imageUrl})` }}></div>
+                        <div className={styles.headerImage} style={{ backgroundImage: `url(${getUrl(imageUrl)})` }}></div>
                         <div className={styles.headerContent}>
                             <h1 className={styles.h1}>{name}</h1>
                         </div>

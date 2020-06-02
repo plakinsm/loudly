@@ -8,6 +8,7 @@ import { fetchForAlbum } from '../../api/fetch';
 import { Songlist } from '../../components/songlist';
 import { Container } from '../../components/container/container';
 import { Link } from 'react-router-dom';
+import { getUrl } from '../../api/urls';
 
 class AlbumCmp extends React.Component {
     componentDidMount() {
@@ -35,12 +36,13 @@ class AlbumCmp extends React.Component {
                 year
             },
         } = this.props;
+        
         return (
             <Container namespace="album">
                 <div className={styles.container}>
                     <div className={styles.header}>
                         <div className={styles.headerContent}>
-                            <img className={styles.headerImage} src={imageUrl} alt="Logo" />
+                            <img className={styles.headerImage} src={getUrl(imageUrl)} alt="Logo" />
                             <div>
                                 <span>Album</span>
                                 <h1 className={styles.h1}>{name}</h1>

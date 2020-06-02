@@ -7,6 +7,7 @@ import { ReactComponent as PauseIcon } from '../../assets/pause.svg';
 import { ReactComponent as VolumeIcon } from '../../assets/volume.svg';
 import { Range } from '../../components/range/range';
 import { durationToMMSS } from '../../utils/time';
+import { getUrl } from '../../api/urls';
 
 export class Player extends React.Component {
     state = {
@@ -56,14 +57,13 @@ export class Player extends React.Component {
                 this.setCurrentTime();
                 this.Player.play();
             } else {
-                this.Player = new Audio(this.props.currentSong.url);
+                this.Player = new Audio(getUrl(this.props.currentSong.url));
                 this.Player.addEventListener('loadeddata', () => {
                     this.Player.play();
                     this.Player.volume = this.state.volumePercent * this.volumeMultiplier;
                     this.setCurrentTime();
                 })
                 this.Player.addEventListener('ended', () => {
-                    console.log("HERERE");
                     this.setState({ timePercent: 0 });
                     this.props.nextSong();
                 })
@@ -115,7 +115,6 @@ export class Player extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         const { isPlaying, nextSong, prevSong } = this.props;
         const duration = this.Player && this.Player.duration ? durationToMMSS(this.Player.duration) : "0:00"
         const currentTime = this.Player && this.Player.currentTime ? durationToMMSS(this.Player.currentTime) : "0:00"

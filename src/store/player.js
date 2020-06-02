@@ -66,7 +66,6 @@ export const playerReducer = (state = initValues, { type, payload }) => {
                 if (nextIndex >= playlist.length) {
                     nextIndex = 0;
                 }
-                console.log(nextIndex);
                 return { ...state, currentSong: playlist[nextIndex] }
             }
             return { ...state, isPlaying: false };
